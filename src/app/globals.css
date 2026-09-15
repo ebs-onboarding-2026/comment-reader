@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/*
+ * Tokens taken from the 댓글독해 mockups. The design commits to a single light
+ * treatment, so color-scheme is pinned rather than left to the OS — otherwise
+ * form controls and scrollbars render dark against a light page.
+ */
+@theme {
+  --color-ink: #17171a;
+  --color-muted: #61616a;
+  --color-muted-2: #5c5c66;
+  --color-muted-3: #70707a;
+
+  --color-surface: #fcfcfd;
+  --color-canvas: #f4f4f5;
+  --color-panel: #f7f7f8;
+  --color-sunken: #eeeef0;
+  --color-track: #e8e8ea;
+  --color-avatar: #e0e0e3;
+
+  --color-accent: oklch(0.56 0.16 32);
+  --color-accent-deep: oklch(0.46 0.16 32);
+  --color-accent-soft: oklch(0.55 0.15 32 / 0.07);
+  --color-accent-tint: oklch(0.56 0.16 32 / 0.1);
+
+  --color-positive: oklch(0.52 0.11 162);
+  --color-positive-tint: oklch(0.52 0.11 162 / 0.1);
+  --color-negative: oklch(0.56 0.16 32);
+  --color-neutral: #bcbcc4;
+
+  --color-line: rgb(23 23 26 / 0.1);
+  --color-line-soft: rgb(23 23 26 / 0.07);
+
+  --font-sans: Pretendard, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@keyframes sweep {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-sweep {
+  animation: sweep 1.6s linear infinite;
+}
+
+.animate-pulse-dot {
+  animation: pulse-dot 1.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-sweep,
+  .animate-pulse-dot {
+    animation: none;
+  }
+}
